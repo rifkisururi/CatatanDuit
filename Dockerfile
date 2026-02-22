@@ -29,8 +29,12 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 # Set environment to Production to disable OpenAPI and reduce logging
 ENV ASPNETCORE_ENVIRONMENT=Production
-# Configure garbage collection for containerized environment
+# Configure garbage collection for low-memory containerized environment
 ENV DOTNET_GCServer=1
-ENV DOTNET_GCHeapHardLimit=200000000
-ENV DOTNET_GCHeapCount=2
+ENV DOTNET_GCHeapHardLimit=100000000
+ENV DOTNET_GCHeapCount=1
+ENV DOTNET_GCGen2MaxHeapLimit=100000000
+# Force frequent garbage collection
+ENV DOTNET_GCConcurrent=false
+ENV COMPlus_GCConcurrent=false
 ENTRYPOINT ["dotnet", "CatatanDuit.Api.dll"]

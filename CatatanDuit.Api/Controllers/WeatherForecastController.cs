@@ -12,15 +12,25 @@ namespace CatatanDuit.Api.Controllers
         ];
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<WeatherForecast[]> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return await Task.Run(() =>
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                var today = DateTime.Now;
+                var result = new WeatherForecast[5];
+
+                for (int i = 0; i < 5; i++)
+                {
+                    result[i] = new WeatherForecast
+                    {
+                        Date = DateOnly.FromDateTime(today.AddDays(i + 1)),
+                        TemperatureC = Random.Shared.Next(-20, 55),
+                        Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                    };
+                }
+
+                return result;
+            });
         }
     }
 }
