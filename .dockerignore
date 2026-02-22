@@ -28,3 +28,6 @@ README.md
 !.git/config
 !.git/packed-refs
 !.git/refs/heads/**
+# Exception: Keep root Dockerfile and railway.json for deployment
+!/Dockerfile
+!/railway.json

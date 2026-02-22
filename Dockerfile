@@ -27,4 +27,10 @@ RUN dotnet publish "./CatatanDuit.Api.csproj" -c $BUILD_CONFIGURATION -o /app/pu
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+# Set environment to Production to disable OpenAPI and reduce logging
+ENV ASPNETCORE_ENVIRONMENT=Production
+# Configure garbage collection for containerized environment
+ENV DOTNET_GCServer=1
+ENV DOTNET_GCHeapHardLimit=200000000
+ENV DOTNET_GCHeapCount=2
 ENTRYPOINT ["dotnet", "CatatanDuit.Api.dll"]
