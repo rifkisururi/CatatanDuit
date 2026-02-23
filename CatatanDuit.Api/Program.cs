@@ -62,10 +62,10 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 
 // Only add OpenAPI in development to prevent memory leak in production
-if (builder.Environment.IsDevelopment())
-{
+//if (builder.Environment.IsDevelopment())
+//{
     builder.Services.AddOpenApi();
-}
+//}
 
 // Configure Kestrel to prevent connection pile-up
 builder.WebHost.ConfigureKestrel(options =>
