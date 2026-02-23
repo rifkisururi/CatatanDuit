@@ -361,3 +361,43 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# User Secrets - NEVER commit sensitive data!
+**/appsettings.*.json
+!**/appsettings.*.json.example
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+
+# EF Core
+**/Migrations/*.Designer.cs
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Kilocode
+.kilocode/
+
+# Railway deployment (if you want to keep deployment settings local)
+railway.json
+!railway.json.example
+
+# Environment files
+.env
+.env.local
+.env.*.local

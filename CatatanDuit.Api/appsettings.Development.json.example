@@ -1,0 +1,18 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Port=5432;Database=CatatanDuitDb;Username=postgres;Password=your_password_here"
+  },
+  "Jwt": {
+    "Issuer": "CatatanDuit",
+    "Audience": "CatatanDuitClient",
+    "Key": "your_super_secret_key_change_this_in_production_at_least_32_chars",
+    "ExpiryMinutes": 1440
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
